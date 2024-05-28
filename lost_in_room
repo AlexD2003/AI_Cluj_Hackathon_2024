@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+AUDIO="$(date).wav"
+
+ffmpeg -y -f alsa -i hw:1 -acodec pcm_s16le -ac 1 -ar 44100 -t 5 -f wav "$AUDIO"
+
+CMD="$(python3 stt.py "./$AUDIO")"
+
+IMG="$(date).jpg"
+
+ffmpeg -i /dev/video0 -frames:v 1 "$IMG"
+
+python3 api.py "./$IMG" "$CMD if you don't understand what I said or it didn't
+make sense, explicity reply: \"-1\" or \"2\" respectively if image is not clear"
+
+rm "$IMG"
+
+rm "$AUDIO"

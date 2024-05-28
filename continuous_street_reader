@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+CMD="from the street, if there is an imediate danger for a blind man within
+aproximatly 10 meters, reply with what the danger is, the aproximatly distance
+to it and how to avoid it, keep it simple and clear, if there is no danger strictly output the string: \"-5\""
+
+# loop over the images in the dir ./asd
+mkdir -p ./streets
+for i in ./streets/*.jpg; do
+    IMG="$i"
+
+    # ffmpeg -v -i /dev/video0 -frames:v 1 "$IMG"
+
+    python3 street.py "./$IMG" "$CMD if you don't understand what I said or it didn't
+    make sense, explicity reply: \"-1\" or \"2\" respectively if image is not clear, also never start the speech with \"danger\""
+done

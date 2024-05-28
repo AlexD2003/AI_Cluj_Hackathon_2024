@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# record audio
+AUDIO="$(date).wav"
+
+ffmpeg -y -f alsa -i hw:1 -acodec pcm_s16le -ac 1 -ar 44100 -t 5 -f wav "$AUDIO"
+
+CMD="I am the blind man in the image $(python3 stt.py "./$AUDIO")"
+
+IMG="$(date).jpg"
+
+ffmpeg -i /dev/video0 -frames:v 1 "$IMG"
+
+convert "$IMG" -flop "$IMG"
+
+python3 api.py "./$IMG" "$CMD use what is in the picture to guide me with simple steps"
+
+rm "$IMG"
+rm "$AUDIO"

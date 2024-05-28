@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+#
+IMG="$(date).jpg"
+
+ffmpeg -i /dev/video0 -frames:v 1 "$IMG"
+
+CMD="tell me all the text that you can see in front of you if you can't see any
+text strictly output \"1\" and if the image is not clear output strictly \"2\""
+
+python3 api.py "./$IMG" "$CMD"
+
+rm "$IMG"
