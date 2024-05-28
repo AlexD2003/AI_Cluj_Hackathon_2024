@@ -11,7 +11,7 @@ We chose to compete in the inclusion category in order to create a solution for 
 
 ### Implementation:
 
-Using GPT-4o api in conjunction with Whisper API and Google TTS we implemented a solution for 3 main issues that have a high impact on someone visually imared, those being:
+Using GPT-4o API in conjunction with Whisper API and Google TTS we implemented a solution for 3 main issues that have a high impact on someone visually impared, those being:
 -Navigating around a nonfamiliar room
 -Reading product text
 -Navigating the dangerous streets and environment of the city
